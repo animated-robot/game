@@ -1,23 +1,19 @@
 import Game from './engine/game'
-import World from './world/world'
 
 class AnimatedRobot extends Game {
-  constructor (canvas, ctx) {
-    super(canvas, ctx)
-
-    this.world = new World(canvas, 32)
+  // @override
+  init (container) {
   }
 
-  init () {
-    this.world.init()
+  // @override
+  render (container, g) {
+    g.drawRect(0, 0, 32, 32, 'hotpink')
+    g.drawRect(32, 32, 32, 32, 'red')
+    g.drawRect(64, 64, 32, 32, 'yellow')
   }
 
-  render (g, canvas) {
-    this.world.render(g, canvas)
-  }
-
-  update ({ canvas, input }, delta) {
-    this.world.update({ game: this, canvas, input }, delta)
+  // @override
+  update (container, delta) {
   }
 }
 

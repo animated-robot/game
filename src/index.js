@@ -1,28 +1,12 @@
 import AnimatedRobot from './animated-robot'
+import AppGameContainer from './engine/app-game-container'
+import ScalableGame from './engine/scalable-game'
 
-function onWindowResize (canvas) {
-  return () => {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-  }
+function main () {
+  const game = new AnimatedRobot()
+  const scalableGame = new ScalableGame(game, 1280, 720)
+  const app = new AppGameContainer(scalableGame)
+  app.start()
 }
 
-async function gameComponent () {
-  const canvas = document.getElementById('main-canvas')
-  const ctx = canvas.getContext('2d')
-
-  // styles
-  canvas.style.backgroundColor = 'black'
-  canvas.style.transform = 'translateZ(0)'
-
-  onWindowResize(canvas)()
-  window.addEventListener('resize', onWindowResize(canvas))
-
-  const game = new AnimatedRobot(canvas, ctx)
-  game.init()
-  game._gameLoop()
-
-  return canvas
-}
-
-window.addEventListener('load', gameComponent, false)
+window.addEventListener('load', main, false)

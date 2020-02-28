@@ -2,16 +2,17 @@ import EntityManager from '../entities/entity-manager'
 import Player from '../entities/player'
 
 class World {
-  constructor (canvas, tileSize) {
-    this.width = Math.abs(canvas.width / tileSize) + 2
-    this.height = Math.abs(canvas.height / tileSize) + 2
+  constructor (canvas, { tileSize, width, height }) {
+    console.log(tileSize, width, height)
+    this.width = width + 4
+    this.height = height + 2
     this.tileSize = tileSize
 
     this.entityManager = new EntityManager()
   }
 
   init () {
-    this.entityManager.spawn(new Player('Vornian'), 50, 50)
+    this.entityManager.spawn(new Player('Vornian'), 200, 200)
   }
 
   render (g, canvas) {
