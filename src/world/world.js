@@ -1,7 +1,9 @@
 import EntityPlayer from '../entities/entity-player'
+import EntityNetwork from '../entities/entity-network'
 
 class World {
   entities = null
+  _networkEntities = {}
 
   constructor () {
     this.entities = []
@@ -27,6 +29,18 @@ class World {
   spawnEntity (entity, x, y) {
     entity.setPosition(x, y)
     this.entities.push(entity)
+  }
+
+  createOrUpdate ({ playerId, direction }) {
+    let entity = this._networkEntities[playerId]
+
+    if (!entity) {
+      entity = new EntityNetwork(playerId)
+      this._networkEntities[playerId] = entity
+      this.spawnEntity(this._networkEntities[playerId], 250, 250)
+    }
+
+    entity.handleContext({ direction })
   }
 }
 

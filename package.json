@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --hot --colors --content-base=./public --host=0.0.0.0",
+    "start": "webpack-dev-server --inline --hot --colors --content-base=./public --port=8000 --host=0.0.0.0",
     "build": "webpack"
   },
   "babel": {
@@ -37,6 +37,7 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
-    "lit-html": "^1.1.2"
+    "lit-html": "^1.1.2",
+    "socket.io-client": "^2.3.0"
   }
 }
