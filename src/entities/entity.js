@@ -12,6 +12,8 @@ class Entity {
 
   isNameVisible = false
 
+  _model = null
+
   constructor (name, width, height) {
     this.name = name
     this.width = width
@@ -22,7 +24,11 @@ class Entity {
   }
 
   render (container, g) {
-    g.drawRect(this.getX(), this.getY(), this.width, this.height, this.color)
+    if (this._model) {
+      this._model.render(this.getX(), this.getY(), g)
+    } else {
+      g.drawRect(this.getX(), this.getY(), this.width, this.height, this.color)
+    }
 
     if (this.isNameVisible) {
       g.drawText(this.name, this.getX(), this.getY() - 10)
@@ -46,6 +52,10 @@ class Entity {
 
   getY () {
     return this.y
+  }
+
+  setModel (model) {
+    this._model = model
   }
 }
 

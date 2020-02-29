@@ -1,10 +1,12 @@
 import EntityAlive from './entity-alive'
+import ModelHuman from '../models/model-human'
 
 class EntityPlayer extends EntityAlive {
   constructor (name) {
-    super(name, 26, 46, 0.1)
-    this.color = 'hotpink'
+    super(name, 26, 80, 0.1)
+    this.color = 'yellow'
     this.isNameVisible = true
+    this.setModel(new ModelHuman())
   }
 
   update (container, delta) {
