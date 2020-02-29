@@ -28,6 +28,11 @@ class Graphics {
     this.ctx.fillRect(-(width / 2), -(height / 2), width, height)
     this.ctx.restore()
   }
+
+  drawText (text, x, y, color = 'white', shadow = false) {
+    this.ctx.fillStyle = color
+    this.ctx.fillText(text, x, y)
+  }
 }
 
 export default Graphics
