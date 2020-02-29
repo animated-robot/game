@@ -35,5 +35,8 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "dependencies": {
+    "lit-html": "^1.1.2"
   }
 }
