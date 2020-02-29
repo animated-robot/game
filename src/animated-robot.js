@@ -1,11 +1,16 @@
 import Game from './engine/game'
 import World from './world/world'
+import NetworkManager from './network-manager'
 
 class AnimatedRobot extends Game {
+  socket = null
   world = null
 
-  constructor () {
+  _networkManager = null
+
+  constructor (socket) {
     super()
+    this.socket = socket
 
     this.world = new World()
   }
@@ -13,6 +18,7 @@ class AnimatedRobot extends Game {
   // @override
   init (container) {
     this.world.init(container)
+    this._networkManager = new NetworkManager(this)
   }
 
   // @override

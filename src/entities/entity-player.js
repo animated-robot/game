@@ -8,16 +8,6 @@ class EntityPlayer extends EntityAlive {
     this.isNameVisible = true
     this.setModel(new ModelHuman())
   }
-
-  update (container, delta) {
-    if (Math.random() < 0.05) {
-      const nx = 400 + (Math.random() - Math.random()) * 200
-      const ny = 400 + (Math.random() - Math.random()) * 200
-      this.moveTo(nx, ny)
-    }
-
-    super.update(container, delta)
-  }
 }
 
 export default EntityPlayer
