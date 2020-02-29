@@ -10,6 +10,8 @@ class Entity {
   width = null
   height = null
 
+  isNameVisible = false
+
   constructor (name, width, height) {
     this.name = name
     this.width = width
@@ -21,6 +23,10 @@ class Entity {
 
   render (container, g) {
     g.drawRect(this.getX(), this.getY(), this.width, this.height, this.color)
+
+    if (this.isNameVisible) {
+      g.drawText(this.name, this.getX(), this.getY() - 10)
+    }
   }
 
   update (container, delta) {}
@@ -30,7 +36,7 @@ class Entity {
     this.y = y
   }
 
-  getPosition () {
+  get position () {
     return new Position(this.x, this.y)
   }
 
