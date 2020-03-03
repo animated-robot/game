@@ -7,7 +7,9 @@ import mainMenu from './views/main-menu'
 import gameView from './views/game-view'
 import statusView from './views/status-view'
 
-const socket = io('//191.252.184.102:8080/front')
+const socket = io('//game.paulopieczarka.com:8080/front', {
+  transports: ['websocket']
+})
 
 function renderMainMenu () {
   const startHandler = () => {
